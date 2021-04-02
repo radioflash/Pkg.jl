@@ -59,6 +59,14 @@ results in a versionbound on Example as `[0.2.1, 0.3.0)`.
 In particular, a package may set `version = "0.2.4"` when it has feature additions compared to 0.2.3 as long as it
 remains backward compatible with 0.2.0.  See also [The `version` field](@ref).
 
+### Public libraries and v1.0
+
+Any package released as a public library should strongly consider to release the very first version as 1.0.0.
+The SemVer specification explicity demands public APIs to be versioned ≥1.0.0; disregarding it has several severe drawbacks:
+
+- Feature growth (non-compatibility-breaking) can not be distinguished from bugfixes (because any change in the minor version would imply breaking changes)
+- The transition to version v1.0 would *necessarily* be a breaking change, forcing ALL users that depend on the library to update their compat entries to avoid conflicts.
+
 ### Caret specifiers
 
 A caret specifier allows upgrade that would be compatible according to semver.
